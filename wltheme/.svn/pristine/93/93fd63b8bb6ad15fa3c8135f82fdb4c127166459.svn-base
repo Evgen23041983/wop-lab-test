@@ -1,0 +1,717 @@
+/*Header*/
+/*
+Theme Name: Food Recipe
+
+Author: KEN
+
+Description: Tthis theme can be used for cooking blogs
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, white, light, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, featured-images, post-formats, sticky-post, translation-ready
+Text Domain: foodrecipe
+*/
+/*
+#food{
+color: #ffffff;
+font-family: "Happy Monkey";
+font-size: 24px;
+font-weight: 400;
+line-height: 53.57px;
+
+float: right;
+}
+*/
+.
+
+.foodrecipe-footer-bottom {
+	background-color: black;
+	color: #ffffff;
+}
+
+
+
+/*Header*/
+
+/*Header Top*/
+.foodrecipe-header-top{
+	background-color: #666666;
+}
+/*logo*/
+.foodrecipe-header-top .logo {
+	padding-top: 37px;
+	padding-bottom: 38px;
+}
+
+.logo::after {
+	content: 'Food Recipe';
+	color: #ffffff;
+	font-family: "Happy Monkey";
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 53.57px;
+	padding-left: 10px;
+}
+/*end logo*/
+
+/*menu*/
+.navbar {
+	padding-top: 52px;
+	padding-bottom: 53px;
+	height: 15px;
+	padding-left: 18px;
+}
+
+.navbar .menu-item {
+	height: 14px;
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	text-transform: uppercase;
+	padding-right: 30px; 
+}
+
+.navbar .menu-item a {
+	text-decoration: none;
+	color: white;
+}
+/*end menu*/
+
+/*register form*/
+.block-btn {
+	margin-top: 45px;
+}
+
+
+
+.block-btn a {
+	height: 60px;
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 20px 20px;
+	margin-left: 10px;
+	background-color: #ea416e;
+	
+}
+
+
+}
+/*end register form*/
+
+/*Header Slider*/
+
+.carousel-control-prev {
+	
+}
+
+.h-carousel {
+	height: 44px;
+	font-family: Montserrat;
+	font-size: 60px;
+	font-weight: 400;
+	line-height: 80px;
+	text-transform: uppercase;
+	margin-top: 150px;
+	margin-bottom: 50px;
+}
+
+.p-carousel {
+	height: 70px;
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 45px;
+	margin-bottom: 80px;
+}
+
+.read-more {
+	width: 160px;
+	height: 60px;
+	border: 2px solid #ffffff;
+	margin-left: auto;
+    margin-right: auto;
+	line-height: 60px;
+}
+
+.read-more a {
+	height: 14px;
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.read-more a:hover {
+	color: #ea416e; 
+}
+
+.next-btn {
+	border-radius: 50%;
+	width: 46px;
+	height: 46px;
+	margin-top: 480px;
+	background: black;
+
+}
+
+.prev-btn {
+	border-radius: 50%;
+	width: 46px;
+	height: 46px;
+	margin-top: 480px;
+	background: black;
+}
+
+.carousel-control-prev {
+ 	left: 45%;
+ }
+
+.carousel-control-next {
+ 	right: 45%;
+ }
+
+
+@media (max-width: 320px) {
+	.abc {
+		padding: 0;
+	}
+
+	.carousel-control-prev {
+		left: 33%;
+	}
+
+	.carousel-control-next {
+		right: 33%;
+	}
+}
+
+.carousel-item {
+	height: 780px;
+	
+}
+
+/*end Header Slider*/
+
+/*Content*/
+
+/*Count posts*/
+.show-parameters{
+	margin-top: 60px;
+	margin-bottom: 60px;
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+
+
+.show-items {
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	font-family: "Montserrat - Regular";
+	font-weight: 400;
+	font-family: "Font Awesome";
+	margin-top: 60px;
+}
+
+.sort-by {
+	color: #ea416e;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	font-family: "Montserrat - Regular";
+	font-weight: 400;
+	font-family: "Font Awesome";
+	margin-top: 60px;
+}
+/*count items*/
+#foodrecipe_display_count {
+	border: none;
+	background-color: #ffffff;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	color: #999999;
+}
+
+#foodrecipe_display_count option {
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	color: #999999;
+	border: none;
+}
+
+#foodrecipe_display_count:hover {
+	color: #ea416e;
+}
+/*end count items*/
+
+/*sort posts*/
+#foodrecipe_sort_posts {
+	border: none;
+	background-color: #ffffff;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	color: #999999;
+}
+
+#foodrecipe_sort_posts option {
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	color: #999999;
+	border: none;
+}
+
+#foodrecipe_sort_posts:hover {
+	color: #ea416e;
+}
+/*end count items*/
+
+/*Post*/
+
+.format-video a.more-link{
+	display: none;
+}
+
+.title-post {
+	text-align: center;
+}
+.title-post a {
+	color: #666666;
+	font-family: Montserrat;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.title-post a:hover {
+    color: #ea416e; 
+}
+
+.meta {
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.meta a {
+	text-decoration: none;
+	color: #999999;
+}
+
+.meta a:hover {
+	color: #ea416e;
+	text-decoration: none;
+
+}
+
+.post {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.more  {
+	text-align: center;
+	padding-top: 30px;
+}
+
+.more-link {
+	border: 1px solid #ea416e;
+	background-color: #fbfbfb;
+	margin-left: auto;
+    margin-right: auto;
+    padding: 22px 44px 24px 43px  ;
+    
+	color: #ea416e;
+	font-family: Montserrat;
+	font-size: 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.more-link:hover  { 
+	color: #ffffff;
+	background-color: #ea416e;
+	text-decoration: none;
+}
+
+.entry {
+	text-align: center;
+} 
+
+blockquote {
+	color: #ea416e;
+	font-family: Montserrat;
+	font-size: 30px;
+	font-weight: 400;
+	line-height: 48px;
+	font-size: 20px;
+	line-height: 50px;
+	border: 1px solid #ea416e;
+	border-left: 10px solid #ea416e;
+}
+
+blockquote p {
+	padding: 38px 38px 38px 100px;
+}
+
+blockquote cite {
+	padding: 38px 38px 38px 100px;
+}
+
+.entry-link {
+	color: #ea416e;
+	font-family: Montserrat;
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 40px;
+	border: 1px solid #ea416e;
+	border-left: 10px solid #ea416e;
+}
+
+
+/* Widgets */
+.widget {
+	margin-top: 60px;
+}
+
+.widget_title {
+	width: 192px;
+	height: 20px;
+	color: #666666;
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 30px;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+}
+
+.widget .widget_search {
+	
+}
+/*widget_search*/
+
+.search {
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	margin-left: -5px;
+}
+/*widget_categories*/
+.widget_categories .widget_title:before {
+	content: url(cat1.png);
+	width: 20px;
+	height: 20px; 
+	padding-right: 5px;
+}
+.cat-item {
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+	list-style-type: none;
+	margin-left: -40px;
+}
+
+.cat-item a {
+	
+	color: #999999;
+	text-decoration: none;
+}
+
+.cat-item a:hover {
+	text-decoration: none;
+	color: #ea416e;
+}
+
+/*widget  recent*/
+.widget_recent_entries li {
+	list-style-type: none;
+	margin-left: -40px;
+}
+
+.widget_recent_entries a {
+	color: #666666;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+.widget_recent_entries a:hover {
+	color: #666666;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+	text-decoration: none;
+	color: #ea416e;
+}
+
+.post-date {
+	color: #666666;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+/*widget text*/
+
+.textwidget {
+	color: #808080;
+	font-family: Lato;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+/*widget_archive*/
+
+.widget_archive li {
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+	list-style-type: none;
+	margin-left: -40px;
+}
+
+.widget_archive li a {
+	color: #999999;
+	text-decoration: none;
+}
+
+.widget_archive li a:hover {
+	text-decoration: none;
+	color: #ea416e;
+}
+
+.widget_archive .widget_title:before {
+	content: url(arch.png);
+	width: 20px;
+	height: 20px; 
+	padding-right: 5px;
+}
+
+/*Pagination*/
+
+.screen-reader-text{
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+.pagination .page-numbers {
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 30px;
+	padding: 0 20px;
+	display: inline-block;
+	vertical-align:top;
+	color: #999999;
+}
+ 
+.pagination .page-numbers.current {
+	text-transform: uppercase;
+	font-size:25px;
+	background: #eee;
+}
+ 
+.pagination .current {
+	display: inline-block;
+	line-height:25px;
+}
+ 
+.pagination .prev,
+.pagination .next {
+	color: #999999;
+	display: inline-block;
+	padding:0 20px;
+}
+ 
+.pagination .page-numbers:hover {
+	border: 1px solid #ea416e;
+	background-color: #fbfbfb;
+	text-decoration:none;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
+
+.pagination:before {
+	content: '<';
+	color: #999999;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+/*Footer*/
+
+	/*Footer top*/
+.foodrecipe-footer {
+	margin-top: 50px;
+}
+
+.foodrecipe-footer-top {
+	background-color: #303030;
+}
+
+.foodrecipe-footer-top  .widget-title {
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+.foodrecipe-footer-top  .textwidget {
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 26px;
+}
+
+.widget_nav_menu .widget-title{
+	color: #ffffff;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+.menu-item {
+	list-style-type: none;
+}
+
+#menu-headermenu-1 .menu-item a{
+	font-family: Montserrat;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 30px;
+	color: #ffffff;
+	margin-left: -40px;
+}
+
+#menu-headermenu-1 .menu-item a:hover{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.foodrecipe-footer-top .widget_recent_entries {
+
+	font-family: Montserrat;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 20px;
+	color: #ffffff;
+
+}
+
+.widget_recent_entries a:hover {
+	text-decoration: none;
+	color: #ea416e;
+
+}
+
+
+	/*Footer bottom*/
+
+.foodrecipe-footer-bottom {
+	
+	background-color: #252525;
+}
+
+.copiright {
+	color: #bababa;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 25px;
+	text-align: center;
+}
+
+.theme {
+	color: #bababa;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 25px;
+	text-align: center;
+	
+}
+
+
+.foodrecipe-footer-bottom {
+	background-color: black;
+	color: #ffffff;
+}
+
+.foodrecipe-slider{
+	padding: 0;
+}
+
+.footer__bottom {
+	text-align: center;
+}
+
+.cool-but a {
+	background-color: #ea416e;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 40px;
+	height: 40px;
+	
+	display: flex;
+	justify-content: center;
+	line-height: 60px;
+	border-radius: 50%;
+	
+}
+
+.bottom-top {
+	padding-top: 30px;
+}
+
+
+
+

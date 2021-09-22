@@ -1,0 +1,94 @@
+<?php get_header(); ?>
+	<div class="foodrecipe-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-9 left-column">
+					<div class="foodrecipe-archive">
+						
+					</div>
+					<div class="row">
+						<div class="col-12 col-md-5 col-lg-7 show-parameters">
+							<?php
+								global $wp_query;
+								echo $wp_query->found_posts . ' ' . __( 'post found', 'foodrecipe' ); 
+								
+							?>
+						</div><!-- .show-parameters -->
+						<div class="col-12 col-md-7 col-lg-5 ">
+							<div class="row">
+    							<div class="col-6 ml-auto show-items">
+    								<form action="" method="post" name='foodrecipe_display_count'>
+	    								<select name="foodrecipe_display_count_name" id="foodrecipe_display_count">
+	    									<option value='20'><?php _e( 'Show  items', 'foodrecipe' ); ?></option>
+	    									<option value='1'><?php _e( 'Show 1 items', 'foodrecipe' ); ?></option>
+	    									<option value='2'><?php _e( 'Show 2 items', 'foodrecipe' ); ?></option>
+	    									<option value='5'><?php _e( 'Show 10 items', 'foodrecipe' ); ?></option>
+	    								</select>
+    								</form>
+    							</div>
+    							<div class="col-6 sort-by ">
+    								<form action="" method="post" name='foodrecipe_sort_posts' >
+	    								<select name="foodrecipe_sort_posts_name" id="foodrecipe_sort_posts">
+	    									<option value='date'><?php _e( 'Sort', 'foodrecipe' ); ?></option>
+	    									<option value='date'><?php _e( 'Sort by Date ', 'foodrecipe' ); ?></option>
+	    									<option value='title'><?php _e( 'Sort by Title', 'foodrecipe' ); ?></option>
+	    								</select></div>
+	    							</form>
+							</div>
+						</div>
+
+					</div><!-- .row -->
+								
+					<!-- Start the Loop. -->
+					<?php
+						if ( have_posts() ) : 
+					 	while ( have_posts() ) : 
+					 	the_post();
+					?>
+		 			<div <?php  post_class();  ?>>
+
+			 			<h2 class="title-post"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php _e( 'Permanent link to', 'foodrecipe' ); ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+
+
+			 			<div class="meta"><span><?php _e( 'Posted by', 'foodrecipe' ); ?> <?php the_author_posts_link(); ?><?php echo ' / '?></span><span><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago / '; ?></span><span> 13 likes </span><?php echo ' / '?><span>
+			 			<?php _e( 'Comments', 'foodrecipe' ); ?> <?php comments_number( 'no comments', '1 comment', '% comments' ); ?></span></div>
+						
+			 			<div class="entry">
+			 				<?php the_excerpt(); ?>
+			 			</div>
+
+						
+			 			<div class="more"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php _e( 'Permanent link to', 'foodrecipe' ); ?> <?php the_title_attribute(); ?>" class="more-link">read more</a></div>
+			 		</div> <!-- closes the first div box -->
+
+					<?php endwhile; 
+					the_posts_pagination(
+						$args = array(
+						    'show_all'     => false,
+						    'end_size'     => 1,
+						    'mid_size'     => 1,
+						    'prev_next'    => true,
+						    'prev_text'    => __('<'),
+						    'next_text'    => __('>'),
+						    'add_args'     => false,
+						    'add_fragment' => '',
+						    //'before_page_number' => '',
+						        //'after_page_number' => '',
+						    'screen_reader_text' => ' ',
+						));
+
+					 	else : ?>
+						<p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'foodrecipe' ); ?></p>
+
+					 	<?php endif; ?>
+
+						
+				</div><!-- .left-column -->
+
+				<div class="col-12 col-md-3 d-sm-none d-md-block right-column">
+					<?php get_sidebar() ?>
+				</div><!-- .right-column -->
+			</div><!-- .row -->
+		</div><!-- .container -->
+	
+<?php get_footer(); ?>

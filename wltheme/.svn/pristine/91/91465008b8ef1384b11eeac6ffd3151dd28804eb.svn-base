@@ -1,0 +1,225 @@
+<?php 
+
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which runs
+ * before the init hook. The init hook is too late for some features, such as indicating
+ * support post thumbnails.
+ *
+ * To override twentytwelve_setup() in a child theme, add your own twentytwelve_setup to your child theme's
+ * functions.php file.
+ *
+ * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
+ * @uses register_nav_menus() To add support for navigation menus.
+ * @uses add_custom_background() To add support for a custom background.
+ * @uses add_editor_style() To style the visual editor.
+ * @uses load_theme_textdomain() For translation/localization support.
+ * @uses add_custom_image_header() To add support for a custom header.
+ * @uses register_default_headers() To register the default custom header images provided with the theme.
+ * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
+ *
+ * @since Twenty Twelve 1.0
+ */
+
+
+
+
+function foodrecipe_setup() {
+
+	
+	add_theme_support( 'custom-logo',  );
+	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link' , 'image', 'quote', 'status', 'video', 'audio', 'chat'  ) ); /*  Регистрирует поддержку новых возможностей темы в WordPress (поддержка миниатюр, форматов записей и т.д.).*/
+		
+
+	
+	add_theme_support( 'post-thumbnails' );
+
+	add_theme_support( 'automatic-feed-links' );
+
+		$defaults = array(
+			'height'      => 45,
+			'width'       => 37,
+		 	'flex-height' => true,
+		 	'flex-width'  => true,
+		 	'header-text' => array( 'site-title', 'site-description' ),
+ );
+
+	add_theme_support( 'custom-logo', $defaults );
+
+	load_theme_textdomain( 'foodrecipe', get_template_directory() . '/languages' );
+
+	/*$locale = get_locale();
+	$locale_file = get_template_directory() . "/languages/$locale.php";
+	if ( is_readable( $locale_file ) )
+		require_once( $locale_file );
+*/
+	register_nav_menus( array(
+		'primary' => __( 'header meny', 'foodrecipe' ),
+	) );
+
+	add_custom_background();
+
+	if ( ! defined( 'HEADER_TEXTCOLOR' ) )
+		define( 'HEADER_TEXTCOLOR', '#fff' );
+
+	if ( ! defined( 'NO_HEADER_TEXT' ) )
+		define( 'NO_HEADER_TEXT', false );
+
+	add_image_size( 'foodrecipe-slider-size', 3000, 700, true ); 
+
+}
+
+
+function foodrecipe_widgets_init() {  /* Регистрирует панель виджетов (место, куда размещаются виджеты в админ-панели, чтобы потом вывести их в лицевой части). */ 
+    register_sidebar( array(
+        'name'          => __( 'Content Widgets', 'foodrecipe' ), /* Название панели виджетов. Название будет видно в админ-панели WordPress.*/ 
+        'id'            => 'foodrecipe-content-widgets', /* Идентификатор виджета. Строка, в которой не должно быть заглавных букв и пробелов */ 
+        'description'   => __( 'These widgets will be displayed side by side, before comments.', 'foodrecipe' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget_title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer Widgets', 'foodrecipe' ),
+        'id'            => 'foodrecipe-footer-widgets',
+        'description'   => __( 'These widgets will be displayed in the footer.', 'foodrecipe' ),
+        'before_widget' => '<div id="%1$s" class="widget col-md-3 col-12 %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget_title">',
+        'after_title'   => '</h3>',
+    ) );
+
+}
+
+
+
+
+
+
+
+
+function foodrecipe_enqueue_style() {
+	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' ); /* подключаем bootstrap в начало*/
+
+    wp_enqueue_style( 'foodrecipe-style', get_template_directory_uri() . '/css/style.css' ); /* подключаю мои стили*/
+    
+	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '4.0', true ); /* подключаем JS и JQuery в конец*/
+    
+    wp_enqueue_script( 'foodrecipe-script', get_stylesheet_directory_uri() . '/js/script.js',  array(), '4.0', true ); /* подключаю свой скрипт в конец*/ 
+}
+
+
+
+function foodrecipe_pagesize( $query ) {
+	if (!session_id()) {
+		session_start();
+
+	}
+
+	if (isset($_POST['foodrecipe_display_count_name'])) {
+		$_COOKIE['foodrecipe_display_count_name'] = $_POST['foodrecipe_display_count_name'];
+	}
+	
+	if (isset($_POST['foodrecipe_sort_posts_name'])) {
+		$_COOKIE['foodrecipe_sort_posts_name'] = $_POST['foodrecipe_sort_posts_name'];
+	}
+
+    if ( ! is_admin() && $query->is_main_query() && !empty( $_COOKIE['foodrecipe_display_count_name'] ) )  {
+        
+        $query->set( 'posts_per_page', $_COOKIE['foodrecipe_display_count_name']);
+        return;
+    }
+
+    if ( ! is_admin() && $query->is_main_query() && !empty( $_COOKIE['foodrecipe_sort_posts_name'] )  )  {
+        
+        $query->set( 'orderby', $_COOKIE['foodrecipe_sort_posts_name']);
+        $query->set( 'order', 'ASC' );
+        
+
+        return;
+    }
+}
+
+
+/*Этап 1. Добавление метабокса, вешаем на хук add_meta_boxes*/ 
+function foodrecipe_register_meta_boxes() {
+	/* Добавляет дополнительные блоки (meta box) на страницы редактирования/создания постов, постоянных страниц или произвольных типов записей в админ-панели.
+
+	*/
+    add_meta_box( 'foodrecipe-slider-meta-box', __( 'Slider Meta Box', 'foodrecipe' ), 'foodrecipe_slider_display', 'post' );
+}
+
+ 
+/**
+ * Meta box display callback.
+ *
+ * @param WP_Post $post Current post object.
+ */
+
+/*Этап 2. Заполнение */ 
+/*Callback функция  */
+function foodrecipe_slider_display( $post ) {
+	$foodrecipe_display_inslider = get_post_meta( $post->ID, 'foodrecipe_display_inslider', true );
+	/*get_post_meta - получает значение произвольного поля записи (поста). */
+	?>
+	<label for="foodrecipe_display_inslider">
+		<input type="checkbox" name="foodrecipe_display_inslider" value="1" id="foodrecipe_display_inslider" <?php checked( $foodrecipe_display_inslider, '1' );?> /> 
+		<?php _e( 'Displey this post in the Slider', 'foodrecipe' ) ?>
+	</label>
+
+	<?php
+}
+ 
+/**
+ * Save meta box content.
+ *
+ * @param int $post_id Post ID
+ */
+
+/*Этап 3. Сохранение */
+function foodrecipe_save_meta_box( $post_id ) {
+	global $post;
+    
+    if ( wp_is_post_revision( $post_id ) ) {
+        return;
+    }
+
+    if ( 'post' !== $post->post_type ) {
+        return;
+    }
+
+    if (isset( $_POST['foodrecipe_display_inslider'] ) ) {  /* проверяем, пришёл ли запрос со страницы с метабоксом*/
+    	update_post_meta( $post_id, 'foodrecipe_display_inslider', 1 );
+    } else {
+    	delete_post_meta( $post_id, 'foodrecipe_display_inslider' );
+    }
+}
+
+function foodrecipe_solid_cat($html, $args) {
+	$html = str_replace('</a>', ' ', $html);
+	$html = str_replace(')', ') </a>', $html);
+
+	return $html;
+}
+
+add_action( 'widgets_init', 'foodrecipe_widgets_init' );
+add_action( 'after_setup_theme', 'foodrecipe_setup' );
+add_action( 'wp_enqueue_scripts', 'foodrecipe_enqueue_style' );
+
+add_action( 'pre_get_posts', 'foodrecipe_pagesize', 1 );
+
+
+add_action( 'add_meta_boxes', 'foodrecipe_register_meta_boxes' );
+add_action( 'save_post', 'foodrecipe_save_meta_box' );
+
+add_action( 'wp_list_categories', 'foodrecipe_solid_cat', 11, 2 );
+
+
+
+
+
+
+

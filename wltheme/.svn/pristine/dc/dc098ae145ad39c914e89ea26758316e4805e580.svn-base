@@ -1,0 +1,30 @@
+		<div class="foodrecipe-footer">
+			<div class="foodrecipe-footer-top container-fluid">
+				<div class="container">
+					<div class="row">
+						<?php if ( is_active_sidebar( 'foodrecipe-footer-widgets' ) ) { ?>
+
+					        	<?php dynamic_sidebar( 'foodrecipe-footer-widgets' ); ?>
+
+						<?php } ?>
+
+					</div><!-- .row -->
+				</div><!-- .container -->
+			</div><!-- .foodrecipe-footer-top -->
+			<div class="foodrecipe-footer-bottom container-fluid">
+				<div class="container">
+					<div class="row bottom-top">
+						<div class="col-12 col-md-5 copiright"><?php echo __( 'Copiright', 'foodrecipe' ) . ' &copy ' . date('Y') . ' ' . __( 'All Rights Reserved','foodrecipe' ); ?></div>
+						<div class="col-12 col-md-2 cool-but"><a href="" onckick="return up()"></a></div>
+						<div class="col-12 col-md-5 theme"><?php echo __( 'Theme by', 'foodrecipe') ?></div>
+					</div><!-- .row -->
+				</div><!-- .container -->
+			</div><!-- .foodrecipe-footer-bottom -->
+		</div><!-- .foodrecipe-footer -->
+	</div><!-- .content-wrapper -->
+
+
+	<?php wp_footer(); ?>
+	
+	</body>
+</html>
