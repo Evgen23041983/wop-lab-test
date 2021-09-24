@@ -1,5 +1,0 @@
-<?php if ( is_active_sidebar( 'foodrecipe-content-widgets' ) ) { ?>
-	<div id="sidebar">
-    	<?php dynamic_sidebar( 'foodrecipe-content-widgets' ); ?>
-	</div>
-<?php } ?>
